@@ -32,11 +32,15 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: "mvn -B ${mavenGoal} --file ${buildScript}"
+    
+    #commentout
     - name: SonarQube Scan
       uses: sonarsource/sonarqube-scan-action@master
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      #commentIn
+      
     - uses: actions/upload-artifact@v3
       with:
        name: buildArtifact
